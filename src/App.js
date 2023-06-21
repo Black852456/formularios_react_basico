@@ -4,32 +4,24 @@ import { useState } from 'react';
 
 function App() {
 
-  const [numero,setNumero] = useState('');
+ const[texto,setTexto] = useState('');
 
-
-
-  function bloquearNumeros(event) {
-
-    const entrada = event.target.value;
-    let cantidad = 0;
-    for(let i = 0;i<entrada.length;i++){
-      if(entrada[i] == '0' || entrada[i] == '1'){
-        cantidad++;
-      }
-      if(cantidad == entrada.length){
-        setNumero(entrada)
-      }
-    }
-
-
-  }
-
-
+function cambiarTexto(e){
+  setTexto(e.target.value);
+}
   
 
   return (
     <div >
-      <input type='number' value={numero} onChange={bloquearNumeros} />
+      <p>
+        <textarea value={texto} onChange={cambiarTexto} cols="100" rows="5">
+
+        </textarea>
+      </p>
+      <p>
+        <textarea value={texto} cols="100" rows="5"></textarea>
+      </p>
+      <p>Caracteres: {texto.length}</p>
     </div>
   );
 }
