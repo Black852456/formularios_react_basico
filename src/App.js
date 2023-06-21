@@ -1,27 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
-import { useState } from 'react';
+import logo from "./logo.svg";
+import "./App.css";
+import { useState } from "react";
 
 function App() {
+  const diassemana = [
+    "lunes",
+    "Martes",
+    "Miercoles",
+    "Jueves",
+    "Viernes",
+    "Sabado",
+    "Domingo",
+  ];
 
- const[texto,setTexto] = useState('');
+const [dia,setDiaSeleccionado] = useState('');
 
-function cambiarTexto(e){
-  setTexto(e.target.value);
-}
-  
+  function diaSeleccionado(e){
+    
+    setDiaSeleccionado(e.target.value)
+  }
 
   return (
-    <div >
-      <p>
-        <textarea value={texto} onChange={cambiarTexto} cols="100" rows="5">
-
-        </textarea>
-      </p>
-      <p>
-        <textarea value={texto} cols="100" rows="5"></textarea>
-      </p>
-      <p>Caracteres: {texto.length}</p>
+    <div>
+      <select onChange={diaSeleccionado}>
+        {diassemana.map((dia) => {
+          return <option value={dia}>{dia}</option>;
+        })}
+      </select>
+      <p>{dia}</p>
     </div>
   );
 }
