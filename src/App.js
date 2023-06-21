@@ -3,31 +3,22 @@ import "./App.css";
 import { useState } from "react";
 
 function App() {
-  const diassemana = [
-    "lunes",
-    "Martes",
-    "Miercoles",
-    "Jueves",
-    "Viernes",
-    "Sabado",
-    "Domingo",
-  ];
 
-const [dia,setDiaSeleccionado] = useState('');
+const[estudios,setEstudios] = useState('Primario');
 
-  function diaSeleccionado(e){
-    
-    setDiaSeleccionado(e.target.value)
-  }
+function cambio(e){
+  setEstudios(e.target.value);
+}
 
   return (
     <div>
-      <select onChange={diaSeleccionado}>
-        {diassemana.map((dia) => {
-          return <option value={dia}>{dia}</option>;
-        })}
-      </select>
-      <p>{dia}</p>
+     <input id="primario" type="radio" name="estudio" value="Primario" checked={estudios == 'Primario'} onChange={cambio}/>
+     <label for="primario">Primaria</label><br></br>
+     <input id="secundaria" type="radio" name="estudio" value="Secundario" checked={estudios == 'Secundario'} onChange={cambio}/>
+     <label for="secundaria">Secundaria</label><br></br>
+     <input id="universitario" type="radio" name="estudio" value="Universitario" checked={estudios == 'Universitario'} onChange={cambio}/>
+     <label for="universitario">Universitario</label><br></br>
+     <p>{estudios}</p>
     </div>
   );
 }
